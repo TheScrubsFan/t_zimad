@@ -1,29 +1,31 @@
 require 'redis'
 
-class RedisConnector
-  class << self
-    def get(key)
-      connection.hgetall("#{namespace}:#{key}")
-    end
+class RedisConnector < RedisConnectorBase
+  def initialize(namespace)
+    @namespace = namespace
+  end
 
-    def set(key, *attrs)
-      connection.hmset("#{namespace}:#{key}", *(attrs.flatten))
-    end
+  def get_all
+    keys = connection.keys "#{@namespace}:*"
 
-    def clean(key, field)
-      connection.hdel("#{namespace}:#{key}", field)
+    keys.map do |key|
+      get_without_namespace key
     end
   end
 
-  private
+  def get(key)
+    connection.hgetall "#{@namespace}:#{key}"
+  end
 
-  class << self
-    def connection
-      @connection ||= Redis.new(connect_options)
-    end
+  def get_without_namespace(key)
+    connection.hgetall key
+  end
 
-    def namespace
-      'plane'
-    end
+  def set(key, *attrs)
+    connection.hmset "#{@namespace}:#{key}", *(attrs.flatten)
+  end
+
+  def clean(key, field)
+    connection.hdel "#{@namespace}:#{key}", field
   end
 end

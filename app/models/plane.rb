@@ -1,9 +1,11 @@
 class Plane
-  include RedisConnector
-
   class << self
+    def connector
+      @connector ||= RedisConnector.new('planes')
+    end
+
     def all
-      RedisConnector.get 'plane'
+      connector.get_all.sort_by { |plane| plane['number'] }
     end
   end
 end

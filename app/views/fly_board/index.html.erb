@@ -1,1 +1,23 @@
-ola
+<h1>
+  Fly Board
+</h1>
+
+<table>
+  <tr>
+    <th>N</th>
+    <th>State</th>
+    <th>Action</th>
+  </tr>
+
+  <% @planes.each do |plane| %>
+    <tr>
+      <td>
+        <%= plane['number'] %>
+      </td>
+      <td>
+        <%= plane['state'] %>
+      </td>
+      <td></td>
+    </tr>
+  <% end %>
+</table>
