@@ -1,24 +1,32 @@
-# README
+# TestZimad Main
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Getting Started
 
-Things you may want to cover:
+Run bundle (for fish syntax).
 
-* Ruby version
 
-* System dependencies
+```
+bundle install --path ~/.bundle --binstubs & git checkout bin/ & spring stop & spring binstub 
+```
 
-* Configuration
+## Running
 
-* Database creation
+Fill redis database.
 
-* Database initialization
+```
+bundle exec rake seed:planes
+```
 
-* How to run the test suite
+Start server. Available at http://localhost:3000/
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+```
+rails s
+```
 
-* ...
+## Authors
+
+* **Baidin Maxim** - *Creator* - [the_scrubs_fan](https://github.com/TheScrubsFan)
+
+
+
