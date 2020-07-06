@@ -17,7 +17,11 @@
       <td>
         <%= plane['state'] %>
       </td>
-      <td></td>
+      <td>
+        <%= link_to 'On take-off',
+                    plane_path(plane['number'], plane: { state: 'takeoff' }),
+                    method: :patch if plane['state'] == 'hangar' %>
+      </td>
     </tr>
   <% end %>
 </table>
