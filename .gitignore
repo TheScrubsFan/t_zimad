@@ -25,4 +25,4 @@ yarn-debug.log*
 .yarn-integrity
 
 *.swp
-/bin
+/bin/*
