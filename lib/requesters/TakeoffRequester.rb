@@ -1,26 +1,26 @@
-module Requesters
-  class TakeoffRequester
-    TAKEOFF_URL = 'localhost:9292/takeoff'
+require 'rest-client'
 
-    class << self
-      def rest_client_request(url, params = {}, method = :get)
-        # for check request params
-        # raise URI.unescape(params.to_param).inspect
+class TakeoffRequester
+  TAKEOFF_URL = 'localhost:9292/takeoff'
 
-        RestClient::Request.execute(
-          method: method,
-          url: url,
-          headers: {
-            params: params
-          }
-        )
-      rescue RestClient::NotFound
-        nil
-      end
+  class << self
+    def rest_client_request(url, params = {}, method = :get)
+      # for check request params
+      # raise URI.unescape(params.to_param).inspect
 
-      def takeoff
-        rest_client_request TAKEOFF_URL, {}, :post
-      end
+      RestClient::Request.execute(
+        method: method,
+        url: url,
+        headers: {
+          params: params
+        }
+      )
+    rescue RestClient::NotFound
+      nil
+    end
+
+    def takeoff(id)
+      rest_client_request TAKEOFF_URL, { id: id }, :post
     end
   end
 end
