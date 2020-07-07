@@ -1,8 +1,8 @@
-<h1>
+<h1 class='white text-center'>
   Fly Board
 </h1>
 
-<table>
+<table class='flyboard_table'>
   <tr>
     <th>N</th>
     <th>State</th>
@@ -11,16 +11,17 @@
 
   <% @planes.each do |plane| %>
     <tr>
-      <td>
+      <td class='white'>
         <%= plane['number'] %>
       </td>
-      <td>
+      <td class='white'>
         <%= plane['state'] %>
       </td>
       <td>
         <%= link_to 'On take-off',
                     plane_path(plane['number'], plane: { state: 'takeoff' }),
-                    method: :patch if plane['state'] == 'hangar' %>
+                    method: :patch,
+                    class: 'my_button' if plane['state'] == 'hangar' %>
       </td>
     </tr>
   <% end %>
