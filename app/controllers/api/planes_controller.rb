@@ -3,6 +3,7 @@ class Api::PlanesController < Api::ApplicationController
 
   def hangar
     Plane.update params['plane_id'], plane_params.to_a.flatten
+    PlaneQueue.recheck
   end
 
   private

@@ -15,5 +15,9 @@ class Plane
     def update(id, *attrs)
       connector.set id, *attrs
     end
+
+    def runway_busy?
+      all.select { |plane| plane['state'] == 'takeoff' }.any?
+    end
   end
 end
