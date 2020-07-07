@@ -33,6 +33,10 @@ Start server. Available at http://localhost:3000/
 ```
 rails s
 ```
+## Built With
+
+* Ruby - 2.6.0
+* Rails - 6.0.3
 
 ## Authors
 
