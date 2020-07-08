@@ -14,10 +14,10 @@
       <td class='white'>
         <%= plane['number'] %>
       </td>
-      <td class='white'>
+      <td data-channel='plane_states' data-id="state:<%= plane['number'] %>" class='white'>
         <%= plane['state'] %>
       </td>
-      <td>
+      <td data-channel='plane_states' data-id="link:<%= plane['number'] %>">
         <%= link_to 'On take-off',
                     plane_path(plane['number'], plane: { state: 'takeoff' }),
                     method: :patch,

@@ -40,6 +40,7 @@ class PlaneQueue
       params = params_hash id, :takeoff, 0
 
       Plane.update id, params.to_a.flatten
+      ActionCable.server.broadcast 'plane_states', plane: Plane.find_by_id(id)
       TakeoffRequester.takeoff id
     end
 

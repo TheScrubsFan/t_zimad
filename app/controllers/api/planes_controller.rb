@@ -3,6 +3,7 @@ class Api::PlanesController < Api::ApplicationController
 
   def hangar
     Plane.update params['plane_id'], plane_params.to_a.flatten
+    ActionCable.server.broadcast 'plane_states', plane: Plane.find_by_id(params['plane_id'])
     PlaneQueue.recheck
   end
 
