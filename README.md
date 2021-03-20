@@ -10,10 +10,15 @@
 - взлётом занимается отдельный [микросервис](https://github.com/TheScrubsFan/TestZimad-api), который отсчитывает случайное количество секунд и возвращает сигнал о том, что самолёт взлетел;
 - для хранения использовать NoSQL базу данных.
 
-## Getting Started
+## Getting Started Main
+
+Use main folder.
+
+```
+cd main/
+```
 
 Run bundle.
-
 
 ```
 bundle install
@@ -37,6 +42,42 @@ rails s
 
 * Ruby - 2.6.0
 * Rails - 6.0.3
+
+
+
+## Getting Started API
+
+Use api folder.
+
+```
+cd api/
+```
+
+Run bundle.
+
+```
+bundle install
+```
+
+## Running
+
+Start sidekiq.
+
+```
+bundle exec sidekiq -r ./server.rb
+```
+
+Start server. Available at http://localhost:9292
+
+
+```
+bundle exec rackup
+```
+## Built With
+
+* Ruby - 2.6.0
+
+
 
 ## Authors
 
