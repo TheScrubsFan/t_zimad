@@ -40,7 +40,7 @@ rails s
 ```
 ## Built With
 
-* Ruby - 2.6.0
+* Ruby - 2.6.5
 * Rails - 6.0.3
 
 
